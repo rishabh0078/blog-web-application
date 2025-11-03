@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-import axios from 'axios';
 import API from '../utils/api';
 import Loader from '../components/Loader';
 import { Upload } from 'lucide-react';
@@ -37,7 +36,7 @@ const EditBlog = () => {
 
   const fetchBlog = async () => {
     try {
-      const { data } = await axios.get(`/api/blogs/${id}`);
+      const { data } = await API.get(`/blogs/${id}`);
       setTitle(data.title);
       setContent(data.content);
       setCurrentImage(data.image);

@@ -1,6 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import axios from 'axios';
 import API from '../utils/api';
 import { AuthContext } from '../context/AuthContext';
 import Loader from '../components/Loader';
@@ -21,7 +20,7 @@ const BlogDetail = () => {
 
   const fetchBlog = async () => {
     try {
-      const { data } = await axios.get(`/api/blogs/${id}`);
+      const { data } = await API.get(`/blogs/${id}`);
       setBlog(data);
       setLoading(false);
     } catch (err) {
