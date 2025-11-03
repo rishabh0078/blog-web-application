@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+import API from '../utils/api';
 import BlogCard from '../components/BlogCard';
 import Loader from '../components/Loader';
 import { Sparkles } from 'lucide-react';
@@ -15,7 +15,7 @@ const Home = () => {
 
   const fetchBlogs = async () => {
     try {
-      const { data } = await axios.get('/api/blogs');
+      const { data } = await API.get('/blogs');
       setBlogs(data);
       setLoading(false);
     } catch (err) {
